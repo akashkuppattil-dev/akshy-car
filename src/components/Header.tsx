@@ -68,8 +68,8 @@ export function Header({
           {/* Logo */}
           <div className="flex-shrink-0 cursor-pointer group" onClick={() => handleNavClick('home')}>
             <div className="flex items-center">
-              <motion.img src="/logo.svg" alt="Auto Vibe Logo" className="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} />
-              <span className="ml-3 text-lg md:text-2xl font-bold tracking-wide text-white"></span>
+              <motion.img src="/logo.png" alt="Auto Vibe Logo" onError={(e)=>{(e.currentTarget as HTMLImageElement).src = '/logo.svg'}} className="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} />
+          
             </div>
           </div>
 
