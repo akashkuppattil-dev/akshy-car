@@ -10,7 +10,7 @@ export function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const handler = (e: any) => {
+    const handler = (e: CustomEvent<string>) => {
       if (e?.detail) setCurrentPage(e.detail)
     }
     window.addEventListener('navigate-to', handler as EventListener)
@@ -46,7 +46,7 @@ export function App() {
     }
   };
   return <div className="min-h-screen bg-black flex flex-col font-sans">
-      {loading && <Loader onFinish={()=>setLoading(false)} />}
+      {loading && <Loader />}
       <Header setCurrentPage={setCurrentPage} currentPage={currentPage} />
       <main className="flex-grow mt-24">{renderPage()}</main>
       <Footer />

@@ -1,9 +1,9 @@
 import {
-    Clock,
-    Instagram,
-    MapPin,
-    MessageCircle,
-    Phone
+  Clock,
+  Instagram,
+  MapPin,
+  MessageCircle,
+  Phone
 } from "lucide-react"
 import React, { useState } from "react"
 
@@ -33,7 +33,7 @@ export function Footer() {
                 src="/logo.png"
                 alt="Auto Vibe Logo"
                 onError={(e) => {
-                  ;(e.currentTarget as HTMLImageElement).src = '/logo.svg'
+                  (e.currentTarget as HTMLImageElement).src = '/logo.svg'
                 }}
                 className="h-16 w-auto mr-3 rounded-md border border-white/10 p-1 bg-black/10 shadow-sm"
               />

@@ -1,4 +1,4 @@
-import { CloudRain, Droplets, Phone, Shield, Slash, Sparkles, Sun, Truck, Wind } from 'lucide-react';
+import { CloudRain, Droplets, Phone, Shield, Slash, Sparkles, Sun, Truck, Wind, type LucideIcon } from 'lucide-react';
 
 type Service = {
   id: string;
@@ -6,7 +6,7 @@ type Service = {
   desc: string;
   time?: string;
   price?: string;
-  icon?: any;
+  icon?: LucideIcon;
 }
 
 const exteriorServices: Service[] = [

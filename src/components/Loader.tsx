@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export function Loader({ onFinish }:{ onFinish?: ()=>void }){
+export function Loader(){
   useEffect(()=>{
     // prevent body scroll while loader is visible
     const prev = document.body.style.overflow;
@@ -12,7 +12,7 @@ export function Loader({ onFinish }:{ onFinish?: ()=>void }){
 
   return (
     <div aria-hidden={false} role="status" className="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-b from-black via-zinc-900 to-black loader-overlay">
-      <div style={{['--loader-scale' as any]: 'clamp(0.6, 10vmin, 1.2)'}} className="flex flex-col items-center gap-6">
+      <div style={{['--loader-scale' as string]: 'clamp(0.6, 10vmin, 1.2)'}} className="flex flex-col items-center gap-6">
         <div className="gearbox" aria-hidden="true">
         <div className="overlay" />
         <div className="gear one">
