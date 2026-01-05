@@ -22,6 +22,17 @@ body {
   overflow-x: hidden;
 }
 
+/* Classic accent color for headings and subtle gold highlights */
+:root {
+  --classic-gold: #d4af37;
+}
+
+/* Slight smoothing for a more classic printed feel */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* Smooth scrolling for anchor navigation */
 html {
   scroll-behavior: smooth;
@@ -80,6 +91,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 0.05em;
 }
+
+.classic-accent { color: var(--classic-gold); }
 
 /* Noise Texture */
 .bg-noise {
