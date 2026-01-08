@@ -45,7 +45,7 @@ export function FloatingWhatsApp() {
                 />
             )}
 
-            <div className="fixed right-4 bottom-24 md:bottom-6 z-[9990] flex flex-col items-end gap-3 pointer-events-none">
+            <div className="fixed right-4 bottom-4 z-[9990] flex flex-col items-end gap-3 pointer-events-none">
                 <div className="pointer-events-auto flex flex-col items-end">
                     <AnimatePresence>
                         {/* Auto Greeting Bubble */}

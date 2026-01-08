@@ -3,7 +3,6 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import Loader from './components/Loader';
-import { StickyMobileCTA } from './components/StickyMobileCTA';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { HomePage } from './pages/HomePage';
@@ -52,7 +51,6 @@ export function App() {
     <Header setCurrentPage={setCurrentPage} currentPage={currentPage} />
     <main className="flex-grow">{renderPage()}</main>
     <FloatingWhatsApp />
-    <StickyMobileCTA />
     <Footer />
   </div>;
 }
