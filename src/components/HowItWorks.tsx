@@ -68,31 +68,31 @@ export const HowItWorks = () => {
     const carY = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
 
     const steps = [
-        { number: "01", title: "Detailed Wash", description: "Thorough exterior cleaning to remove loose dirt and grime.", align: "left" },
-        { number: "02", title: "Paint Correction", description: "Restoring the paintwork to eliminate swirls and scratches.", align: "right" },
-        { number: "03", title: "Ceramic Coating", description: "Applying premium protection for long-lasting gloss and durability.", align: "left" },
-        { number: "04", title: "Interior Care", description: "Deep cleaning and conditioning of all interior surfaces.", align: "right" },
-        { number: "05", title: "Quality Check", description: "Final inspection under infrared lights to ensure perfection.", align: "left" }
+        { number: "01", title: "Precision Decontamination", description: "Beyond a standard wash — we perform a multi-stage decontamination to remove iron particles, tar, and bonded surface grit.", align: "left" },
+        { number: "02", title: "Professional Paint Correction", description: "Our specialists use dual-action polishers to remove swirl marks, scratches, and oxidation, restoring depth and clarity.", align: "right" },
+        { number: "03", title: "Advanced Molecular Coating", description: "Application of Ceramic or Graphene layers that bond with the clear coat for self-cleaning properties and extreme gloss.", align: "left" },
+        { number: "04", title: "Hygienic Interior Rebirth", description: "Full cabin sterilization using steam and high-extraction tools to eliminate bacteria, odors, and deep-seated stains.", align: "right" },
+        { number: "05", title: "Master Inspection", description: "A rigorous 40-point quality check under specialized lighting ensures every inch meets the Auto Vibe standard.", align: "left" }
     ];
 
     return (
-        <section ref={containerRef} className="py-24 bg-zinc-950 relative overflow-hidden">
+        <section ref={containerRef} className="py-12 bg-zinc-950 relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5 pointer-events-none">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(229,25,18,0.15),transparent_70%)]" />
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-12">
+                <div className="text-center mb-8">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter"
+                        className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter"
                     >
                         How <span className="text-brand-red">Auto Vibe</span> Works
                     </motion.h2>
-                    <p className="mt-4 text-gray-400 text-sm md:text-base uppercase tracking-widest font-medium">
+                    <p className="mt-3 text-gray-400 text-[10px] md:text-xs uppercase tracking-widest font-medium">
                         The Ultimate Process for Perfection
                     </p>
                 </div>
@@ -125,7 +125,7 @@ export const HowItWorks = () => {
                     </motion.div>
 
                     {/* Steps List */}
-                    <div className="pt-24 pb-24 space-y-48">
+                    <div className="pt-16 pb-16 space-y-32">
                         {steps.map((step, idx) => (
                             <TimelineStep
                                 key={step.number}

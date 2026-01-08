@@ -1,130 +1,122 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Quote, Star } from 'lucide-react';
-const reviews = [{
-  id: 1,
-  name: 'Mohammed Ramees',
-  rating: 5,
-  date: '2 months ago',
-  text: 'Excellent service! I did ceramic coating for my car here. The result was amazing. Professional staff and timely delivery. Highly recommended for anyone looking for premium car detailing.'
-}, {
-  id: 2,
-  name: 'Arun Kumar',
-  rating: 5,
-  date: '1 month ago',
-  text: 'Best detailing studio in Narikkuni area. They did a fantastic job with the interior cleaning and exterior polishing. My car looks brand new again. Very satisfied with their work.'
-}, {
-  id: 3,
-  name: 'Fasil K',
-  rating: 5,
-  date: '3 months ago',
-  text: 'Great experience at Auto Vibe. The team is very knowledgeable about different coatings. I opted for the Graphene coating and the gloss is incredible. Worth every penny.'
-}, {
-  id: 4,
-  name: 'Rahul P',
-  rating: 5,
-  date: '1 month ago',
-  text: 'Professional approach and quality work. They explained everything clearly before starting the work. The headlight restoration was perfect. Will definitely visit again.'
-}, {
-  id: 5,
-  name: 'Jaseem VK',
-  rating: 5,
-  date: '4 months ago',
-  text: 'Top notch service. The attention to detail is impressive. They cleaned every nook and corner. The anti-rust treatment was done very professionally.'
-}, {
-  id: 6,
-  name: 'Sajid Ali',
-  rating: 5,
-  date: '2 months ago',
-  text: 'Highly recommended! Good customer service and affordable pricing compared to other detailing centers. The staff is very friendly and skilled.'
-}];
+
+const reviews = [
+  {
+    id: 1,
+    name: 'Mohammed Ramees',
+    rating: 5,
+    text: 'Ceramic coating was done perfectly. The gloss and finish are outstanding. Very professional team and clean work.'
+  },
+  {
+    id: 2,
+    name: 'Arun Kumar',
+    rating: 5,
+    text: 'Interior cleaning and exterior polishing were done with great care. My car looks fresh and well maintained.'
+  },
+  {
+    id: 3,
+    name: 'Fasil K',
+    rating: 5,
+    text: 'Opted for Graphene coating and the result is excellent. They explained everything clearly before starting.'
+  },
+  {
+    id: 4,
+    name: 'Rahul P',
+    rating: 5,
+    text: 'Headlight restoration and detailing work came out very neat. The difference was clearly visible.'
+  },
+  {
+    id: 5,
+    name: 'Jaseem VK',
+    rating: 5,
+    text: 'Anti-rust treatment and underbody wash were done professionally. Good attention to detail.'
+  },
+  {
+    id: 6,
+    name: 'Sajid Ali',
+    rating: 5,
+    text: 'Quality service with reasonable pricing. Friendly staff and timely delivery. Highly recommended.'
+  }
+];
+
 export function ReviewsSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-black via-zinc-950 to-black relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-red/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-brand-gold/5 via-transparent to-transparent rounded-full blur-3xl" />
+    <section className="py-24 bg-black relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 relative z-10 mb-16">
+        <div className="max-w-4xl">
+          <motion.h2
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-8xl font-black text-white mb-8 uppercase tracking-tighter leading-none"
+          >
+            CUSTOMER <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-red to-white/60">
+              REVIEWS
+            </span>
+          </motion.h2>
+          <p className="text-gray-400 text-lg font-medium leading-relaxed border-l-4 border-brand-red pl-8 italic">
+            "Don't just take our word for it. Hear from the automotive enthusiasts who trust Auto Vibe with their most prized possessions."
+          </p>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6
-          }}>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
-              What Our <span className="text-brand-gold">Customers Say</span>
-            </h2>
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <span className="text-4xl font-bold text-white">4.9</span>
-              <div className="flex flex-col items-start">
-                <div className="flex text-yellow-500">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
-                </div>
-                <span className="text-sm text-gray-400">
-                  Based on 16+ Google Reviews
-                </span>
+      {/* Reviews Display: Horizontal Scroll (Mobile) / Grid (Desktop) */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
+        <div className="flex overflow-x-auto snap-x snap-mandatory pb-12 gap-6 -mx-6 px-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:pb-0 md:mx-0 md:px-0 scrollbar-hide">
+          {reviews.map((review, idx) => (
+            <motion.div
+              key={review.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="bg-zinc-900/80 backdrop-blur-md border border-zinc-800 p-8 md:p-10 rounded-[2.5rem] hover:border-brand-gold hover:shadow-2xl hover:shadow-brand-gold/10 transition-all duration-500 group relative min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center"
+            >
+              <div className="absolute top-8 right-8">
+                <Quote className="w-10 h-10 md:w-12 md:h-12 text-zinc-800 group-hover:text-brand-gold/20 transition-all" />
               </div>
-            </div>
-          </motion.div>
-        </div>
 
-        <div className="grid grid-cols-1 tablet-landscape:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {reviews.map((review, index) => <motion.div key={review.id} initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: index * 0.1
-          }} className="bg-gray-900/60 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-brand-gold/50 hover:shadow-lg hover:shadow-brand-gold/20 transition-all duration-300 group hover:-translate-y-1">
-            <div className="flex justify-between items-start mb-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center text-white font-bold text-lg">
+              <div className="flex items-center gap-5 mb-8">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center text-white font-black text-xl md:text-2xl shadow-xl group-hover:scale-110 transition-transform">
                   {review.name.charAt(0)}
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-sm">
+                  <h3 className="text-white font-black text-base md:text-lg uppercase tracking-tight group-hover:text-brand-gold transition-colors">
                     {review.name}
                   </h3>
-                  <span className="text-xs text-gray-500">{review.date}</span>
+                  <div className="flex text-brand-gold mt-1">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star key={i} className="w-3 md:w-3.5 h-3 md:h-3.5 fill-current" />
+                    ))}
+                  </div>
                 </div>
               </div>
-              <Quote className="w-6 h-6 text-gray-700 group-hover:text-brand-gold/50 transition-colors" />
-            </div>
 
-            <div className="flex text-yellow-500 mb-3">
-              {[...Array(review.rating)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
-            </div>
+              <p className="text-gray-400 text-base md:text-lg leading-relaxed font-medium italic relative z-10">
+                "{review.text}"
+              </p>
 
-            <p className="text-gray-300 text-sm leading-relaxed">
-              "{review.text}"
-            </p>
-          </motion.div>)}
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-red/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2.5rem]" />
+            </motion.div>
+          ))}
         </div>
+      </div>
 
-        <div className="text-center">
-          <motion.a href="https://www.google.com/search?sca_esv=b4f6c3afd6a29af1&hl=en&gl=in&output=search&kgmid=/g/11ts36t6tr&q=Auto+Vibe&shndl=30&shem=ptotple,uibspc,shrtsdl&source=sh/x/loc/act/m1/2&kgs=c5cc55d2d288927c&utm_source=ptotple,uibspc,shrtsdl,sh/x/loc/act/m1/2#lrd=0x3ba6678881816823:0xbfaa5ef498f63f51,1,,,," target="_blank" rel="noopener noreferrer" whileHover={{
-            scale: 1.05
-          }} whileTap={{
-            scale: 0.95
-          }} className="inline-flex items-center px-8 py-3 bg-brand-gold text-black font-bold rounded-full hover:bg-brand-gold-light transition-colors">
-            Read All Reviews
-            <ExternalLink className="w-4 h-4 ml-2" />
-          </motion.a>
-        </div>
+      {/* CTA Button */}
+      <div className="text-center mt-20 pb-12">
+        <motion.a
+          href="https://www.google.com/search?q=Auto+Vibe"
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="inline-flex items-center px-12 py-5 bg-zinc-900 border border-zinc-800 text-white font-black rounded-2xl hover:bg-white hover:text-black transition-all uppercase tracking-widest text-xs"
+        >
+          View More on Google
+          <ExternalLink className="w-4 h-4 ml-3" />
+        </motion.a>
       </div>
     </section>
   );

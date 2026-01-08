@@ -1,257 +1,219 @@
 import { motion } from 'framer-motion';
-import { Award, Clock, MapPin, MessageCircle, Shield, Sparkles, Users } from 'lucide-react';
-import { Card } from '../components/Card';
+import { Award, Clock, MapPin, MessageCircle, Shield, Sparkles, Users, History, Target, Heart } from 'lucide-react';
 import { Section } from '../components/Section';
-import { WhyAutoVibeCondensed } from '../components/WhyAutoVibeCondensed';
+import { Card } from '../components/Card';
+import { CountUp } from '../components/CountUp';
+import { WhyAutoVibe } from '../components/WhyAutoVibe';
 
 export function AboutPage() {
-  const services = [
-    { name: 'Exterior Detailing', desc: 'Paint correction, polishing, and ceramic coating' },
-    { name: 'Interior Cleaning', desc: 'Deep cleaning, steam treatment, and odor removal' },
-    { name: 'Protection Services', desc: 'Ceramic coating, waxing, and sealant application' },
-    { name: 'Specialized Care', desc: 'Headlight restoration, tire dressing, and engine bay cleaning' }
+  const stats = [
+    { icon: Users, value: 1000, suffix: '+', label: 'Happy Customers', image: '/shake hand.jpg' },
+    { icon: Award, value: 4.9, decimals: 1, label: 'Google Rating', image: '/rating.jpg' },
+    { icon: Shield, value: 4, suffix: '+', label: 'Years Experience', image: '/experience.jpg' },
+    { icon: Sparkles, value: 100, suffix: '%', label: 'Satisfaction', image: '/satisfaction2.jpg' }
   ];
 
-  const stats = [
-    { icon: Users, value: '200+', label: 'Happy Customers' },
-    { icon: Award, value: '4.9', label: 'Google Rating' },
-    { icon: Shield, value: '2+', label: 'Years Experience' },
-    { icon: Sparkles, value: '100%', label: 'Quality Guarantee' }
+  const values = [
+    {
+      icon: History,
+      title: "Our Heritage",
+      text: "Founded in 2022 in Narikkuni, Auto Vibe started as a passion project for premium car care. We have quickly grown into Kozhikode's preferred studio for elite detailing."
+    },
+    {
+      icon: Target,
+      title: "Our Mission",
+      text: "To preserve and enhance the value of every vehicle that enters our studio through professional-grade processes, premium products, and uncompromising attention to detail."
+    },
+    {
+      icon: Heart,
+      title: "Our Promise",
+      text: "We treat every car like our own. Whether it's a basic wash or a full graphene restoration, our commitment to excellence remains the same."
+    }
   ];
 
   return (
-    <div className="bg-gradient-to-b from-black via-zinc-950 to-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen pt-20">
       {/* Hero Section */}
-      <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-900/10 via-transparent to-blue-900/10" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 text-center">
-          <motion.h1
+      <div className="relative py-16 overflow-hidden border-b border-zinc-900 shadow-2xl shadow-brand-red/5">
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-red/5 via-transparent to-brand-gold/5" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl sm:text-6xl font-bold text-white mb-6"
+            className="flex justify-center mb-8"
           >
-            About <span className="text-red-600">Auto Vibe</span>
+            <div className="px-5 py-2 rounded-full border border-brand-red/30 bg-brand-red/10 text-brand-red text-xs font-black uppercase tracking-[0.3em]">
+              The Auto Vibe Story
+            </div>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-8xl font-black text-white mb-8 uppercase tracking-tighter leading-none"
+          >
+            PRECISION <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-gold to-white/60">
+              MEETS PASSION
+            </span>
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-gray-400 max-w-3xl mx-auto border-l-2 border-red-600 pl-4"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed italic"
           >
-            Your trusted local car detailing studio in Narikkuni, Kozhikode.
-            Professional service, premium products, and exceptional care for every vehicle.
+            "Redefining automotive care in Narikkuni, Kozhikode. Where high-tech chemistry meets traditional craftsmanship."
           </motion.p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-        {/* Stats Section - Card-Driven Layout */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-        >
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card variant="elevated" className="text-center h-full">
-                  <div className="flex flex-col items-center">
-                    <div className="flex justify-center mb-4">
-                      <div className="w-12 h-12 bg-red-600/20 rounded-lg flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-red-600" />
-                      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Stats Section */}
+        <div className="relative mb-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative group min-w-[280px] h-64 md:h-80"
+                >
+                  <Card variant="elevated" className="group text-center h-full relative overflow-hidden !rounded-[2.5rem]">
+                    <div className="absolute inset-0 z-0">
+                      <img
+                        src={stat.image}
+                        alt={stat.label}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
                     </div>
-                    <div className="text-2xl font-bold text-white mb-2">{stat.value}</div>
-                    <div className="text-sm text-gray-400">{stat.label}</div>
-                  </div>
-                </Card>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+
+                    <div className="flex flex-col items-center justify-center h-full relative z-10 p-6">
+                      <div className="flex justify-center mb-6">
+                        <div className="w-16 h-16 bg-brand-gold/10 rounded-full flex items-center justify-center border border-brand-gold/20 mb-6 transition-transform duration-700 ease-in-out group-hover:[transform:rotateY(360deg)]">
+                          <Icon className="w-8 h-8 text-brand-gold" />
+                        </div>
+                      </div>
+                      <div className="text-3xl font-bold text-white mb-2">
+                        <CountUp
+                          to={stat.value}
+                          suffix={stat.suffix}
+                          decimals={stat.decimals}
+                          duration={2.5}
+                        />
+                      </div>
+                      <div className="text-gray-400 font-bold uppercase tracking-widest text-xs">{stat.label}</div>
+                    </div>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
 
         {/* Story Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <h2 className="text-3xl font-bold text-white mb-6">Our Story</h2>
-          <div className="prose prose-invert prose-lg max-w-none text-gray-300 space-y-4">
-            <p>
-              Auto Vibe was founded with a simple mission: to provide exceptional car detailing services
-              that local vehicle owners can trust. Located in the heart of Narikkuni, we've been serving
-              the Kozhikode community since 2022.
-            </p>
-            <p>
-              What started as a passion for automotive care has grown into a trusted neighborhood
-              destination. Our team of skilled technicians combines traditional craftsmanship with
-              modern techniques and premium products to deliver results that exceed expectations.
-            </p>
-            <p>
-              We believe every vehicle deserves the best care, regardless of make, model, or budget.
-              That's why we offer transparent pricing, honest recommendations, and a satisfaction
-              guarantee on all our services.
-            </p>
-          </div>
-        </motion.section>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+          {values.map((v, i) => (
+            <motion.div
+              key={v.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-10 rounded-[3rem] bg-zinc-950 border border-zinc-900 group"
+            >
+              <v.icon className="w-12 h-12 text-brand-red mb-8 group-hover:scale-110 transition-transform" />
+              <h3 className="text-2xl font-black text-white mb-6 uppercase tracking-tight">{v.title}</h3>
+              <p className="text-gray-400 leading-relaxed font-medium">
+                {v.text}
+              </p>
+            </motion.div>
+          ))}
+        </div>
 
-        {/* Services Overview - Card-Driven Layout */}
-        <Section spacing="lg" className="mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-white mb-4">Our Services</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Comprehensive detailing solutions tailored for your vehicle
-            </p>
-          </motion.div>
+        <WhyAutoVibe />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.name}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card variant="default" className="h-full hover:border-red-600/30">
-                  <h3 className="text-lg font-semibold text-white mb-3">{service.name}</h3>
-                  <p className="text-gray-400">{service.desc}</p>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Card variant="outlined" className="inline-block">
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent('navigate-to', { detail: 'services' }))}
-                className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-colors w-full"
-              >
-                View All Services
-              </button>
-            </Card>
-          </div>
-        </Section>
-
-        <WhyAutoVibeCondensed />
-
-        {/* Business Info Card + Map - Card-Driven Layout */}
-        <Section spacing="lg" className="mb-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start"
-          >
-            <div className="lg:col-span-1">
-              <Card variant="elevated" className="h-full">
-                <h3 className="text-lg font-semibold mb-6 text-white">Visit Our Studio</h3>
-                <div className="text-sm text-gray-300 space-y-4">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
+        {/* Business Info Section */}
+        <Section spacing="lg" className="pt-24 border-t border-zinc-900">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-12"
+            >
+              <div>
+                <h2 className="text-4xl font-black text-white mb-8 uppercase tracking-tight">The Studio</h2>
+                <div className="space-y-8">
+                  <div className="flex gap-6">
+                    <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
+                      <MapPin className="w-6 h-6 text-brand-red" />
+                    </div>
                     <div>
-                      <div className="font-medium text-white">Address</div>
-                      <div className="text-gray-400">Poonoor – Narikkuni Road</div>
-                      <div className="text-gray-400">Narikkuni, Kozhikode, Kerala 673585</div>
+                      <div className="font-black text-white uppercase tracking-widest text-sm mb-2">Location</div>
+                      <div className="text-gray-400 font-medium">
+                        Poonoor – Narikkuni Road<br />
+                        Narikkuni, Kozhikode, Kerala 673585
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
+                  <div className="flex gap-6">
+                    <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
+                      <Clock className="w-6 h-6 text-brand-gold" />
+                    </div>
                     <div>
-                      <div className="font-medium text-white">Hours</div>
-                      <div className="text-gray-400">Sunday: 9:00 AM – 12:00 PM</div>
-                      <div className="text-gray-400">Monday–Saturday: 9:00 AM – 6:00 PM</div>
+                      <div className="font-black text-white uppercase tracking-widest text-sm mb-2">Hours</div>
+                      <div className="text-gray-400 font-medium space-y-1">
+                        <div className="flex justify-between w-64 gap-8">
+                          <span>Sun:</span>
+                          <span className="text-white">9:00 AM – 12:00 PM</span>
+                        </div>
+                        <div className="flex justify-between w-64 gap-8">
+                          <span>Mon – Sat:</span>
+                          <span className="text-white">9:00 AM – 6:00 PM</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                  <div className="pt-2">
-                    <a href="https://wa.me/918089314740" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-green-600 text-white text-sm hover:bg-green-700 transition w-full justify-center">
-                      <MessageCircle className="w-4 h-4" />
-                      Book on WhatsApp
-                    </a>
-                  </div>
-                </div>
-              </Card>
-            </div>
-
-            <div className="lg:col-span-2">
-              <Card variant="default" className="p-0">
-                <h3 className="text-lg font-semibold mb-4 text-white p-6 pb-0">Find Us on the Map</h3>
-                <div className="w-full h-64 tablet-portrait:h-80 tablet-landscape:h-96">
-                  <iframe
-                    title="Auto Vibe location"
-                    src="https://www.google.com/maps?q=Narikkuni%20Kozhikode&output=embed"
-                    className="w-full h-full border-0 rounded-b-xl"
-                    loading="lazy"
-                  />
-                </div>
-              </Card>
-
-              <div className="mt-4 flex flex-wrap gap-3">
-                <a href="https://maps.app.goo.gl/iCPXI5hLHqzYEoXKV" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md bg-zinc-800 text-sm text-gray-200 hover:bg-zinc-700 transition">
-                  Open in Google Maps
-                </a>
-                <a href="https://share.google/iCPXI5hLHqzYEoXKV" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md bg-zinc-800 text-sm text-gray-200 hover:bg-zinc-700 transition">
-                  Share Location
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </Section>
-
-        {/* CTA - Card-Driven Layout */}
-        <Section spacing="lg">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Card variant="elevated" className="bg-gradient-to-r from-zinc-900 to-zinc-800">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-                <div className="text-center sm:text-left">
-                  <h3 className="text-2xl font-bold text-white mb-2">Ready to Experience the Difference?</h3>
-                  <p className="text-gray-400">Join hundreds of satisfied customers who trust Auto Vibe with their vehicles.</p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <a href="https://wa.me/918089314740" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-green-600 text-white font-bold hover:bg-green-700 transition">
-                    <MessageCircle className="w-5 h-5" />
-                    Book Now
-                  </a>
-                  <button
-                    onClick={() => window.dispatchEvent(new CustomEvent('navigate-to', { detail: 'contact' }))}
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-red-600 text-white font-bold hover:bg-red-700 transition"
-                  >
-                    Get in Touch
-                  </button>
                 </div>
               </div>
-            </Card>
-          </motion.div>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="https://wa.me/918089314740" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 px-10 py-5 bg-brand-gold text-black font-black rounded-2xl hover:scale-105 transition-transform uppercase tracking-widest text-xs">
+                  <MessageCircle className="w-5 h-5" />
+                  Instant WhatsApp Booking
+                </a>
+                <a href="https://maps.app.goo.gl/iCPXI5hLHqzYEoXKV" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 px-10 py-5 border border-zinc-800 text-white font-black rounded-2xl hover:bg-zinc-900 transition-colors uppercase tracking-widest text-xs">
+                  Open Directions
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative rounded-[3rem] overflow-hidden border border-zinc-800 shadow-2xl h-[500px]"
+            >
+              <iframe
+                title="Auto Vibe location"
+                src="https://www.google.com/maps?q=Narikkuni%20Kozhikode&output=embed"
+                className="w-full h-full"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 pointer-events-none border-[20px] border-black/5" />
+            </motion.div>
+          </div>
         </Section>
       </div>
     </div>
-  )
+  );
 }

@@ -1,226 +1,128 @@
 import {
-  Clock,
   Instagram,
   MapPin,
-  MessageCircle,
-  Phone
+  Phone,
+  Facebook,
+  Twitter,
+  ChevronRight,
+  ShieldCheck
 } from "lucide-react"
-import React, { useState } from "react"
 
 export function Footer() {
-  const [email, setEmail] = useState("")
-
-  function handleSubscribe(e: React.FormEvent) {
-    e.preventDefault()
-    if (!email) return
-    // Simple mailto fallback — integrate with a provider later
-    const mailto = `mailto:hello@autovibe.example?subject=Subscribe&body=Please%20subscribe%20${encodeURIComponent(
-      email
-    )}`
-    window.location.href = mailto
-    setEmail("")
-  }
-
   const navigateTo = (page: string) => {
     window.dispatchEvent(new CustomEvent('navigate-to', { detail: page }));
+    window.scrollTo(0, 0);
   };
 
+  const services = [
+    'Ceramic Coating',
+    'Graphene Coating',
+    'Interior Detailing',
+    'Exterior Detailing',
+    'Paint Correction',
+    'Bike Buffing'
+  ];
+
+  const quickLinks = [
+    { name: 'Home', value: 'home' },
+    { name: 'Our Story', value: 'about' },
+    { name: 'Services', value: 'services' },
+    { name: 'Contact', value: 'contact' }
+  ];
+
   return (
-    <footer className="bg-gradient-to-b from-gray-950 to-black text-gray-300 pt-16 pb-8 border-t border-gray-800/50 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-red/5 via-transparent to-brand-gold/5" />
+    <footer className="bg-black text-gray-400 pt-24 pb-12 border-t border-zinc-900 relative overflow-hidden">
+      {/* Background Visuals */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-red/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold/5 blur-[120px] rounded-full pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
 
-        {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
-          {/* About / Brand */}
-          <div>
-            {/* Logos */}
-            <div className="flex flex-col items-start gap-4 mb-6 -mt-16">
-              <div className="flex items-center gap-4">
-                <img
-                  src="/Car Logo Only.svg"
-                  alt="Auto Vibe Icon"
-                  className="h-[90px] md:h-[120px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 block"
-                />
-                <img
-                  src="/logo text.svg"
-                  alt="Auto Vibe"
-                  className="h-[140px] md:h-[180px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 block -ml-5 md:-ml-7"
-                  style={{ filter: 'brightness(2)' }}
-                />
-              </div>
+          {/* Brand Column */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="flex items-center gap-4 -ml-4">
+              <img src="/Car Logo Only.svg" alt="Auto Vibe" className="h-16 w-auto" loading="lazy" />
+              <img src="/logo text.svg" alt="Auto Vibe" className="h-20 w-auto brightness-200" loading="lazy" />
             </div>
-
-            <p className="text-sm leading-relaxed text-gray-400 mb-6">
-              Auto Vibe delivers premium car care in Narikkuni, Kozhikode —
-              professional interior and exterior detailing since 2022.
+            <p className="text-sm leading-relaxed max-w-sm">
+              Kozhikode's destination for elite automotive restoration.
+              We blend advanced chemical protection with artistic precision
+              to make your vehicle better than new.
             </p>
-
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
-              <label htmlFor="footer-email" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="footer-email"
-                type="email"
-                placeholder="Your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-800 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-gold"
-                aria-label="Subscribe with email"
-              />
-              <button
-                type="submit"
-                className="px-4 py-2 rounded-md bg-brand-gold text-black font-bold text-sm hover:bg-brand-gold-light transition mt-2 sm:mt-0"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-5">
-              Services
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <button onClick={() => navigateTo('services')} className="hover:text-white transition text-left">
-                  Exterior Wash & Wax
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateTo('services')} className="hover:text-white transition text-left">
-                  Full Detailing
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateTo('services')} className="hover:text-white transition text-left">
-                  Ceramic Coating
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateTo('services')} className="hover:text-white transition text-left">
-                  Interior Deep Clean
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-5">
-              Quick Links
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <button onClick={() => navigateTo('home')} className="hover:text-white transition text-left">
-                  Home
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateTo('services')} className="hover:text-white transition text-left">
-                  Services
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateTo('contact')} className="hover:text-white transition text-left">
-                  Contact
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateTo('home')} className="hover:text-white transition text-left">
-                  Reviews
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-5">
-              Contact
-            </h3>
-
-            <div className="flex items-start gap-3 mb-3">
-              <MapPin className="w-5 h-5 text-brand-gold mt-0.5" />
-              <p className="text-sm leading-relaxed">
-                Poonoor – Narikkuni Road,
-                <br />
-                Narikkuni, Kozhikode, Kerala 673585
-              </p>
+            <div className="flex gap-4">
+              {[Instagram, Facebook, Twitter].map((Icon, i) => (
+                <a key={i} href="#" className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center hover:bg-brand-red hover:border-brand-red hover:text-white transition-all">
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
+          </div>
 
-            <div className="space-y-3 text-sm">
-              <a href="tel:+918089314740" className="flex items-center gap-3 hover:text-white transition">
-                <Phone className="w-4 h-4 text-brand-gold" />
-                <span>+91 808 9314 740</span>
-              </a>
+          {/* Links Columns */}
+          <div className="lg:col-span-5 grid grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-white font-black uppercase tracking-widest text-xs mb-8">Quick Navigation</h3>
+              <ul className="space-y-4">
+                {quickLinks.map(link => (
+                  <li key={link.value}>
+                    <button
+                      onClick={() => navigateTo(link.value)}
+                      className="group flex items-center gap-2 text-sm hover:text-white transition-colors"
+                    >
+                      <ChevronRight className="w-3 h-3 text-brand-gold transition-transform group-hover:translate-x-1" />
+                      {link.name}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-white font-black uppercase tracking-widest text-xs mb-8">Our Specialties</h3>
+              <ul className="space-y-4">
+                {services.map(service => (
+                  <li key={service}>
+                    <button
+                      onClick={() => navigateTo('services')}
+                      className="group flex items-center gap-2 text-sm hover:text-white transition-colors"
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-red" />
+                      {service}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
-              <a href="tel:+919074997502" className="flex items-center gap-3 hover:text-white transition">
-                <Phone className="w-4 h-4 text-brand-gold" />
-                <span>+91 907 4997 502</span>
-              </a>
-
-              <div className="flex items-center gap-3">
-                <Clock className="w-4 h-4 text-brand-gold" />
-                <div className="text-sm">
-                  <div>Sun: 9:00 AM – 12:00 PM</div>
-                  <div>Mon–Sat: 9:00 AM – 6:00 PM</div>
-                </div>
+          {/* Contact Column */}
+          <div className="lg:col-span-3">
+            <h3 className="text-white font-black uppercase tracking-widest text-xs mb-8">Visit The Studio</h3>
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <MapPin className="w-5 h-5 text-brand-red flex-shrink-0" />
+                <p className="text-sm">Poonoor – Narikkuni Road, Narikkuni, Kozhikode, Kerala 673585</p>
               </div>
-
-              <a
-                href="https://wa.me/918089314740"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-2 px-3 py-2 rounded-md bg-green-600 text-white text-sm hover:bg-green-700 transition"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Book on WhatsApp
-              </a>
-
-              <div className="flex gap-3 pt-4">
-                <a
-                  href="https://www.instagram.com/autovibeofficial"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-800 hover:bg-pink-600 transition"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-
-                <a
-                  href="https://maps.app.goo.gl/iCPXI5hLHqzYEoXKV"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-800 hover:bg-green-600 transition"
-                  aria-label="Google Maps"
-                >
-                  <MapPin className="w-5 h-5" />
-                </a>
+              <div className="flex gap-4">
+                <Phone className="w-5 h-5 text-brand-gold flex-shrink-0" />
+                <p className="text-sm">+91 808 9314 740</p>
+              </div>
+              <div className="pt-4 flex items-center gap-2 text-brand-gold">
+                <ShieldCheck className="w-5 h-5" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Authorized Detailer</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-500 text-center md:text-left w-full md:w-auto">
-            © {new Date().getFullYear()} Auto Vibe Spa & Detailing. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="pt-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">
+            © {new Date().getFullYear()} Auto Vibe Detailing Studio. Narikkuni, Kozhikode.
           </p>
-
-          <div className="flex items-center gap-4 text-xs justify-center md:justify-start w-full md:w-auto">
-            <button onClick={() => navigateTo('home')} className="text-gray-500 hover:text-white transition">
-              Privacy
-            </button>
-            <button onClick={() => navigateTo('home')} className="text-gray-500 hover:text-white transition">
-              Terms
-            </button>
-            <span className="text-gray-600">•</span>
-            <span className="text-gray-500">Built with care</span>
+          <div className="flex gap-8">
+            <button onClick={() => navigateTo('home')} className="text-[10px] font-bold uppercase tracking-[0.2em] hover:text-white transition-colors">Terms</button>
+            <button onClick={() => navigateTo('home')} className="text-[10px] font-bold uppercase tracking-[0.2em] hover:text-white transition-colors">Privacy</button>
           </div>
         </div>
       </div>

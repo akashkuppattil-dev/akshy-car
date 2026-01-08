@@ -91,7 +91,7 @@ export function Header({
     <div className="max-w-7xl mx-auto">
       <div className="flex justify-between items-center relative">
         {/* Logo */}
-        <div className="flex-shrink-0 cursor-pointer group relative z-10" onClick={() => handleNavClick('home')}>
+        <div className="flex-shrink-0 cursor-pointer group relative z-10 ml-4 md:ml-0" onClick={() => handleNavClick('home')}>
           <div className="flex items-center h-full absolute top-1/2 -translate-y-1/2 -left-8 md:-left-12">
             <img
               src="/Car Logo Only.svg"
@@ -119,16 +119,28 @@ export function Header({
         </nav>
 
         {/* Desktop CTAs */}
-        <div className="hidden md:flex items-center space-x-4">
-          <a href="tel:8089314740" className="flex items-center px-4 py-2 text-sm font-bold text-white bg-brand-red hover:bg-brand-red-dark rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(229,25,18,0.5)]">
-            <Phone className="w-4 h-4 mr-2" />
-            <span className="hidden md:inline">Get in Touch</span>
+        <div className="hidden md:flex items-center space-x-3">
+          <a
+            href="tel:+918089314740"
+            className="flex items-center px-6 py-3 text-xs font-black text-white bg-zinc-900 border border-brand-red/30 hover:bg-brand-red hover:text-white rounded-full transition-all transform hover:scale-105 uppercase tracking-widest shadow-[0_0_15px_rgba(229,25,18,0.1)]"
+          >
+            <Phone className="w-3.5 h-3.5 mr-2" />
+            Support
+          </a>
+          <a
+            href="https://wa.me/918089314740"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center px-8 py-3 text-xs font-black text-black bg-brand-gold hover:bg-white rounded-full transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(252,218,6,0.3)] uppercase tracking-[0.2em]"
+          >
+            <MessageCircle className="w-4 h-4 mr-2" />
+            Book Now
           </a>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-expanded={isMenuOpen} aria-label="Toggle menu" className="p-3 text-white hover:text-red-500 transition-colors rounded-md touch-manipulation">
+        <div className="md:hidden flex items-center pr-2">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-expanded={isMenuOpen} aria-label="Toggle menu" className="p-2 text-white hover:text-brand-gold transition-colors rounded-md touch-manipulation backdrop-blur-md bg-black/20 border border-white/10">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
@@ -149,19 +161,19 @@ export function Header({
       }} exit={{
         opacity: 0,
         height: 0
-      }} className="md:hidden bg-black/95 border-t border-white/10 backdrop-blur-xl overflow-hidden">
+      }} className="md:hidden bg-black/95 border-t border-white/10 backdrop-blur-xl overflow-hidden relative z-50">
         <div className="px-4 pt-4 pb-6 space-y-2">
           {navLinks.map(link => <button key={link.name} onClick={() => handleNavClick(link.value)} className={`block w-full text-left px-4 py-4 rounded-lg text-base font-medium transition-colors ${currentPage === link.value ? 'bg-white/10 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'}`}>
             {link.name}
           </button>)}
           <div className="pt-4 grid grid-cols-2 gap-3">
-            <a href="tel:8089314740" className="flex items-center justify-center px-4 py-3 text-sm font-bold text-white bg-brand-red rounded-lg active:bg-brand-red-dark">
+            <a href="tel:+918089314740" className="flex items-center justify-center px-4 py-4 text-xs font-black text-white bg-zinc-900 border border-brand-red/30 hover:bg-brand-red rounded-2xl uppercase tracking-widest transition-all">
               <Phone className="w-4 h-4 mr-2" />
-              Call
+              Support
             </a>
-            <a href="https://wa.me/919074997502" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-4 py-3 text-sm font-bold text-white bg-green-600 rounded-lg active:bg-green-700">
+            <a href="https://wa.me/918089314740" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-4 py-4 text-xs font-black text-black bg-brand-gold rounded-2xl uppercase tracking-widest shadow-lg shadow-brand-gold/20">
               <MessageCircle className="w-4 h-4 mr-2" />
-              WhatsApp
+              Book Now
             </a>
           </div>
         </div>
