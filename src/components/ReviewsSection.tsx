@@ -49,7 +49,8 @@ export function ReviewsSection() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-8xl font-black text-white mb-8 uppercase tracking-tighter leading-none"
+            className="font-black text-white mb-8 uppercase tracking-tighter leading-none"
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
             CUSTOMER <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-red to-white/60">
@@ -64,44 +65,64 @@ export function ReviewsSection() {
 
       {/* Reviews Display: Horizontal Scroll (Mobile) / Grid (Desktop) */}
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
-        <div className="flex overflow-x-auto snap-x snap-mandatory pb-12 gap-6 -mx-6 px-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:pb-0 md:mx-0 md:px-0 scrollbar-hide">
-          {reviews.map((review, idx) => (
+        <motion.div
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 overflow-x-auto snap-x snap-mandatory pb-12 gap-5 -mx-6 px-6 md:gap-8 md:pb-0 md:mx-0 md:px-0 scrollbar-hide"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.15
+              }
+            }
+          }}
+        >
+          {reviews.map((review) => (
             <motion.div
               key={review.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="bg-zinc-900/80 backdrop-blur-md border border-zinc-800 p-8 md:p-10 rounded-[2.5rem] hover:border-brand-gold hover:shadow-2xl hover:shadow-brand-gold/10 transition-all duration-500 group relative min-w-[85vw] sm:min-w-[350px] md:min-w-0 snap-center"
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: {
+                  opacity: 1,
+                  scale: 1,
+                  transition: { type: "spring", damping: 25, stiffness: 100 }
+                }
+              }}
+              className="bg-zinc-900/90 backdrop-blur-xl border border-zinc-800 p-8 rounded-[2rem] hover:border-brand-gold hover:shadow-2xl hover:shadow-brand-gold/10 transition-all duration-500 group relative w-full min-w-[85vw] md:min-w-0 snap-center optimize-gpu flex flex-col h-[300px] shrink-0"
             >
-              <div className="absolute top-8 right-8">
-                <Quote className="w-10 h-10 md:w-12 md:h-12 text-zinc-800 group-hover:text-brand-gold/20 transition-all" />
+              <div className="absolute top-6 right-6">
+                <Quote className="w-8 h-8 text-zinc-800 group-hover:text-brand-gold/20 transition-all" />
               </div>
 
-              <div className="flex items-center gap-5 mb-8">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center text-white font-black text-xl md:text-2xl shadow-xl group-hover:scale-110 transition-transform">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center text-white font-black text-xl shadow-inner border border-zinc-700/50">
                   {review.name.charAt(0)}
                 </div>
                 <div>
-                  <h3 className="text-white font-black text-base md:text-lg uppercase tracking-tight group-hover:text-brand-gold transition-colors">
+                  <h3 className="text-white font-bold text-lg uppercase tracking-tight group-hover:text-brand-gold transition-colors">
                     {review.name}
                   </h3>
-                  <div className="flex text-brand-gold mt-1">
+                  <div className="flex text-brand-gold gap-0.5 mt-1">
                     {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-3 md:w-3.5 h-3 md:h-3.5 fill-current" />
+                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
                     ))}
                   </div>
                 </div>
               </div>
 
-              <p className="text-gray-400 text-base md:text-lg leading-relaxed font-medium italic relative z-10">
-                "{review.text}"
-              </p>
+              <div className="grow">
+                <p className="text-gray-400 text-base leading-relaxed font-medium italic relative z-10 line-clamp-4">
+                  "{review.text}"
+                </p>
+              </div>
 
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-red/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2.5rem]" />
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-red/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]" />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* CTA Button */}

@@ -110,7 +110,10 @@ export function ServicesSection({ detailed }: { detailed?: boolean }) {
         <img
           src={s.image}
           alt={s.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 optimize-gpu"
+          loading="lazy"
+          decoding="async"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
 
@@ -166,7 +169,8 @@ export function ServicesSection({ detailed }: { detailed?: boolean }) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tighter"
+            className="font-black mb-4 uppercase tracking-tighter"
+            style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
           >
             <span className="text-white">Our </span>
             <span className="text-brand-red inline-block animate-pulse">Services</span>
@@ -178,20 +182,42 @@ export function ServicesSection({ detailed }: { detailed?: boolean }) {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, idx) => (
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.15
+              }
+            }
+          }}
+        >
+          {services.map((service) => (
             <motion.div
               key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className="h-full"
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 20
+                  }
+                }
+              }}
+              className="h-full optimize-gpu"
             >
               {renderCard(service)}
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {!detailed && (
           <div className="mt-12 text-center">

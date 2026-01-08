@@ -25,12 +25,15 @@ const TimelineStep = ({ step, index, totalSteps, scrollYProgress }: { step: any,
 
                 {/* Number: Lighter color and positioned away from the center line */}
                 <span
-                    className={`text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-b from-zinc-500 to-zinc-800 absolute -top-10 md:-top-16 opacity-40 select-none z-0 ${step.align === 'left' ? 'md:right-12' : 'md:left-12'}`}
+                    className={`font-black text-transparent bg-clip-text bg-gradient-to-b from-zinc-500 to-zinc-800 absolute -top-10 md:-top-16 opacity-40 select-none z-0 ${step.align === 'left' ? 'md:right-12' : 'md:left-12'}`}
+                    style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)' }}
                 >
                     {step.number}
                 </span>
 
-                <h3 className="text-2xl md:text-3xl font-bold text-white uppercase mb-2 relative z-10 group-hover:text-brand-gold transition-colors">
+                <h3 className="font-bold text-white uppercase mb-2 relative z-10 group-hover:text-brand-gold transition-colors"
+                    style={{ fontSize: 'clamp(1.25rem, 3vw, 1.875rem)' }}
+                >
                     {step.title}
                 </h3>
                 <p className="text-gray-400 text-sm md:text-base leading-relaxed relative z-10">
@@ -88,7 +91,8 @@ export const HowItWorks = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter"
+                        className="font-black text-white uppercase tracking-tighter"
+                        style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
                     >
                         How <span className="text-brand-red">Auto Vibe</span> Works
                     </motion.h2>
@@ -101,18 +105,18 @@ export const HowItWorks = () => {
                 <div className="relative">
 
                     {/* Central Line (Background Track) */}
-                    <div className="absolute left-[20px] md:left-1/2 top-4 bottom-0 w-1 bg-zinc-800 -translate-x-1/2 rounded-full" />
+                    <div className="absolute left-8 md:left-1/2 top-4 bottom-0 w-1 bg-zinc-800 -translate-x-1/2 rounded-full" />
 
                     {/* Filling Line (Progress) - Tracks scroll position */}
                     <motion.div
                         style={{ height: lineHeight }}
-                        className="absolute left-[20px] md:left-1/2 top-4 w-1 bg-brand-red -translate-x-1/2 rounded-full origin-top z-10 box-shadow-[0_0_10px_rgba(229,25,18,0.5)] will-change-transform"
+                        className="absolute left-8 md:left-1/2 top-4 w-1 bg-brand-red -translate-x-1/2 rounded-full origin-top z-10 box-shadow-[0_0_10px_rgba(229,25,18,0.5)] will-change-[height]"
                     />
 
                     {/* Moving Car - Now moves WITH the line using 'top' style based on same progress */}
                     <motion.div
                         style={{ top: carY }}
-                        className="absolute left-[20px] md:left-1/2 -translate-x-1/2 w-32 h-52 md:w-48 md:h-80 z-20 pointer-events-none will-change-transform"
+                        className="absolute left-8 md:left-1/2 -translate-x-1/2 w-32 h-52 md:w-48 md:h-80 z-20 pointer-events-none will-change-[top]"
                     >
                         {/* Offset the car image so its center/bottom aligns with the tip of the line */}
                         <div className="relative -top-3/4">

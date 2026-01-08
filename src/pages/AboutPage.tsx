@@ -51,7 +51,8 @@ export function AboutPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-8xl font-black text-white mb-8 uppercase tracking-tighter leading-none"
+            className="font-black text-white mb-8 uppercase tracking-tighter leading-none"
+            style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}
           >
             PRECISION <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-gold to-white/60">
@@ -91,6 +92,9 @@ export function AboutPage() {
                         src={stat.image}
                         alt={stat.label}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
                     </div>

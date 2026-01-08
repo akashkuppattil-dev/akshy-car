@@ -3,13 +3,18 @@ import { ArrowRight, Phone } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen flex items-center overflow-hidden bg-black">
+    <section className="relative h-[100dvh] flex items-center overflow-hidden bg-black optimize-gpu">
+      {/* Mobile: Static Hero Image */}
       {/* Mobile: Static Hero Image */}
       <div className="absolute inset-0 z-0 md:hidden">
         <img
-          src="/hero image.JPG"
+          src="/hero-image.jpg"
           alt="Premium Detailing"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center optimize-gpu"
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
+          sizes="100vw"
         />
       </div>
 
@@ -20,7 +25,7 @@ export function HeroSection() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-center scale-[1.12]"
+          className="absolute inset-0 w-full h-full object-cover object-center scale-[1.12] optimize-gpu"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
@@ -45,7 +50,9 @@ export function HeroSection() {
             <motion.h1 variants={{
               hidden: { opacity: 0, x: -30 },
               visible: { opacity: 1, x: 0 }
-            }} className="text-4xl sm:text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-8">
+            }} className="font-black text-white tracking-tighter leading-[0.9] mb-8"
+              style={{ fontSize: 'clamp(2.5rem, 10vw, 6rem)' }}
+            >
               PREMIUM <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-gold to-white/60">
                 AUTO CARE
@@ -55,7 +62,9 @@ export function HeroSection() {
             <motion.p variants={{
               hidden: { opacity: 0, x: -30 },
               visible: { opacity: 1, x: 0 }
-            }} className="text-sm sm:text-base text-gray-300 max-w-xl leading-relaxed mb-10 font-medium border-l-4 pl-8 border-brand-gold">
+            }} className="text-gray-300 max-w-xl leading-relaxed mb-10 font-medium border-l-4 pl-8 border-brand-gold"
+              style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.15rem)' }}
+            >
               Kozhikode's destination for elite car restoration. Specializing in high-gloss Ceramic & Graphene coatings, deep interior rejuvenation, and professional paint protection.
             </motion.p>
 
@@ -63,12 +72,12 @@ export function HeroSection() {
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 }
             }} className="flex flex-col sm:flex-row items-center gap-5">
-              <motion.a whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(252, 218, 6, 0.3)' }} whileTap={{ scale: 0.98 }} href="https://wa.me/918089314740" target="_blank" className="group w-full sm:w-auto flex items-center justify-center px-10 py-5 text-sm font-black text-black bg-brand-gold transition-all rounded-2xl uppercase tracking-widest">
+              <motion.a whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(252, 218, 6, 0.3)' }} whileTap={{ scale: 0.98 }} href="https://wa.me/918089314740" target="_blank" className="group w-full sm:w-auto flex items-center justify-center px-10 py-5 font-black text-black bg-brand-gold transition-all rounded-2xl uppercase tracking-widest text-sm sm:text-base cursor-pointer select-none">
                 <Phone className="w-4 h-4 mr-3 group-hover:rotate-12 transition-transform" />
                 Book via WhatsApp
               </motion.a>
 
-              <motion.a whileHover={{ scale: 1.05, x: 5 }} whileTap={{ scale: 0.98 }} href="#services" className="group w-full sm:w-auto flex items-center justify-center px-10 py-5 text-sm font-black text-white border border-white/20 hover:bg-white/10 transition-all rounded-2xl uppercase tracking-widest">
+              <motion.a whileHover={{ scale: 1.05, x: 5 }} whileTap={{ scale: 0.98 }} href="#services" className="group w-full sm:w-auto flex items-center justify-center px-10 py-5 font-black text-white border border-white/20 hover:bg-white/10 transition-all rounded-2xl uppercase tracking-widest text-sm sm:text-base cursor-pointer select-none">
                 View Services
                 <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
               </motion.a>

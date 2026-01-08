@@ -46,7 +46,8 @@ export function ProcessSection() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight"
+                        className="font-black text-white mb-4 uppercase tracking-tight"
+                        style={{ fontSize: 'clamp(2.25rem, 5vw, 3rem)' }}
                     >
                         How We <span className="text-brand-gold">Work</span>
                     </motion.h2>
@@ -55,16 +56,34 @@ export function ProcessSection() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.15
+                            }
+                        }
+                    }}
+                >
                     {steps.map((step, idx) => {
                         const Icon = step.icon;
                         return (
                             <motion.div
                                 key={step.title}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                                variants={{
+                                    hidden: { opacity: 0, y: 30 },
+                                    visible: {
+                                        opacity: 1,
+                                        y: 0,
+                                        transition: { duration: 0.5 }
+                                    }
+                                }}
                                 className="relative flex flex-col items-center text-center group"
                             >
                                 {/* Connector Line (Desktop) */}
@@ -81,7 +100,7 @@ export function ProcessSection() {
                             </motion.div>
                         );
                     })}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

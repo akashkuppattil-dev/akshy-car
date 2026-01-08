@@ -48,7 +48,8 @@ export function ContactPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-8xl font-black text-white mb-8 uppercase tracking-tighter leading-none"
+            className="font-black text-white mb-8 uppercase tracking-tighter leading-none"
+            style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}
           >
             LET'S START THE <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-gold to-white/60">

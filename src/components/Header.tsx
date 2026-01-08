@@ -91,23 +91,23 @@ export function Header({
     <div className="max-w-7xl mx-auto">
       <div className="flex justify-between items-center relative">
         {/* Logo */}
-        <div className="flex-shrink-0 cursor-pointer group relative z-10 ml-4 md:ml-0" onClick={() => handleNavClick('home')}>
-          <div className="flex items-center h-full absolute top-1/2 -translate-y-1/2 -left-8 md:-left-12">
+        <div className="flex-shrink-0 cursor-pointer group relative z-10 ml-0 md:ml-0" onClick={() => handleNavClick('home')}>
+          <div className="flex items-center h-full absolute top-1/2 -translate-y-1/2 left-2 md:-left-12">
             <img
               src="/Car Logo Only.svg"
               alt="Auto Vibe Car"
-              className="h-[90px] md:h-[120px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 block translate-y-3 md:translate-y-4"
+              className="h-[80px] md:h-[120px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 block translate-y-2 md:translate-y-4"
             />
             <img
               src="/logo text.svg"
               alt="Auto Vibe Text"
-              className="h-[140px] md:h-[180px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 block translate-y-1 md:translate-y-2 -ml-5 md:-ml-7"
+              className="h-[100px] md:h-[180px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 block translate-y-1 md:translate-y-2 -ml-3 md:-ml-7"
             />
             {/* Spacer to maintain horizontal layout since container is absolute */}
-            <div className="w-72 md:w-[400px]" />
+            <div className="w-[280px] md:w-[400px]" />
           </div>
           {/* Static spacer to maintain flow while the absolute content hangs */}
-          <div className="h-12 md:h-16 w-72 md:w-[400px]" />
+          <div className="h-12 md:h-16 w-[280px] md:w-[400px]" />
         </div>
 
         {/* Desktop Nav */}

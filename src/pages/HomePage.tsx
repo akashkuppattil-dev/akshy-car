@@ -42,7 +42,8 @@ export function HomePage() {
             className="text-center mb-16"
           >
             <motion.h2
-              className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tighter"
+              className="font-black text-white mb-6 uppercase tracking-tighter"
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
             >
               PROVEN <span className="text-brand-gold">PERFECTION</span>
             </motion.h2>
@@ -69,6 +70,9 @@ export function HomePage() {
                         src={stat.image}
                         alt={stat.label}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
                     </div>

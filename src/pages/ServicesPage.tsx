@@ -46,6 +46,9 @@ export function ServicesPage() {
             src="/coating.jpg"
             alt="Services Background"
             className="w-full h-full object-cover opacity-60 scale-105"
+            loading="eager"
+            fetchPriority="high"
+            decoding="sync"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-red/5 via-transparent to-brand-gold/5" />
@@ -63,7 +66,8 @@ export function ServicesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-8xl font-black text-white mb-8 uppercase tracking-tighter leading-[0.9]"
+            className="font-black text-white mb-8 uppercase tracking-tighter leading-[0.9]"
+            style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}
           >
             PREMIUM <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-gold to-white/60">
@@ -116,7 +120,7 @@ export function ServicesPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
+            <h2 className="font-black text-white mb-6 uppercase tracking-tight" style={{ fontSize: 'clamp(2.5rem, 5vw, 3rem)' }}>
               Why <span className="text-brand-red">Auto Vibe?</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
@@ -158,7 +162,7 @@ export function ServicesPage() {
               transition={{ duration: 0.8 }}
             >
               <div className="inline-block px-4 py-1 rounded-full bg-brand-red/10 border border-brand-red/20 text-brand-red text-[10px] font-black uppercase tracking-[0.2em] mb-6">Climate Guard</div>
-              <h2 className="text-4xl md:text-6xl font-black text-white mb-8 uppercase tracking-tighter leading-tight">
+              <h2 className="font-black text-white mb-8 uppercase tracking-tighter leading-tight" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
                 Built for the <br />
                 <span className="text-brand-gold">Kerala Climate</span>
               </h2>
@@ -193,7 +197,14 @@ export function ServicesPage() {
               className="relative"
             >
               <div className="relative z-10 rounded-[2.5rem] overflow-hidden border border-zinc-800 shadow-2xl">
-                <img src="/protection.jpg" alt="Protection Close-up" className="w-full h-full object-cover" />
+                <img
+                  src="/protection.jpg"
+                  alt="Protection Close-up"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8 p-6 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10">
                   <div className="flex items-center gap-4">
@@ -215,7 +226,7 @@ export function ServicesPage() {
       {/* CTA Section */}
       <section className="py-16 bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tighter">Your Car Deserves The Best</h2>
+          <h2 className="font-black text-white mb-6 uppercase tracking-tighter" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>Your Car Deserves The Best</h2>
           <p className="text-gray-400 mb-10 text-lg">Contact our experts today for a free visual assessment and custom quote.</p>
           <a href="https://wa.me/918089314740" className="inline-flex items-center gap-4 px-12 py-5 bg-brand-gold text-black font-black rounded-2xl hover:scale-105 transition-transform uppercase tracking-widest text-sm shadow-2xl shadow-brand-gold/20">
             Consult with a Specialist

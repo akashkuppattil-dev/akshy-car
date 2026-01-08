@@ -39,7 +39,8 @@ export function FAQSection() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-black text-white mb-3 uppercase tracking-tight"
+                        className="font-black text-white mb-3 uppercase tracking-tight"
+                        style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
                     >
                         Frequently Asked <span className="text-brand-gold">Questions</span>
                     </motion.h2>
@@ -48,19 +49,38 @@ export function FAQSection() {
                     </p>
                 </div>
 
-                <div className="space-y-3">
+                <motion.div
+                    className="space-y-3"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-10%" }}
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.05
+                            }
+                        }
+                    }}
+                >
                     {faqs.map((faq, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="border border-zinc-800 rounded-2xl bg-zinc-900/30 overflow-hidden"
+                            layout
+                            variants={{
+                                hidden: { opacity: 0, y: 10 },
+                                visible: {
+                                    opacity: 1,
+                                    y: 0,
+                                    transition: { duration: 0.3, ease: "easeOut" }
+                                }
+                            }}
+                            className="border border-zinc-800 rounded-2xl bg-zinc-900/30 overflow-hidden optimize-gpu"
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className="w-full px-6 py-4 flex items-center justify-between text-left group transition-colors hover:bg-zinc-800/50"
+                                className="w-full px-6 py-4 flex items-center justify-between text-left group transition-colors hover:bg-zinc-800/50 select-none"
                             >
                                 <span className="text-white font-bold text-base md:text-lg pr-8 group-hover:text-brand-gold transition-colors">
                                     {faq.question}
@@ -80,7 +100,7 @@ export function FAQSection() {
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                        transition={{ duration: 0.2, ease: "easeOut" }}
                                     >
                                         <div className="px-6 pb-5 text-gray-400 leading-relaxed text-sm md:text-base border-t border-zinc-800/50 pt-3">
                                             {faq.answer}
@@ -90,7 +110,7 @@ export function FAQSection() {
                             </AnimatePresence>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* FAQ CTA */}
                 <motion.div
