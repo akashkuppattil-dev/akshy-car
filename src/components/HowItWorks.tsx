@@ -19,7 +19,7 @@ const TimelineStep = ({ step, index, totalSteps, scrollYProgress }: { step: any,
             className={`flex flex-col md:flex-row items-center w-full ${step.align === 'right' ? 'md:flex-row-reverse' : ''}`}
         >
             {/* Text Content */}
-            <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${step.align === 'left' ? 'md:pr-32 md:text-right' : 'md:pl-32 md:text-left'} relative`}>
+            <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${step.align === 'left' ? 'md:pr-32 md:text-right' : 'md:pl-32 md:text-left'} relative`}>
                 {/* Connector Dot for Mobile */}
                 <div className={`md:hidden absolute left-[14px] top-2 w-3 h-3 rounded-full border-2 border-zinc-950 bg-brand-red`} />
 
@@ -116,7 +116,7 @@ export const HowItWorks = () => {
                     {/* Moving Car - Now moves WITH the line using 'top' style based on same progress */}
                     <motion.div
                         style={{ top: carY }}
-                        className="absolute left-8 md:left-1/2 -translate-x-1/2 w-32 h-52 md:w-48 md:h-80 z-20 pointer-events-none will-change-[top]"
+                        className="absolute left-8 md:left-1/2 -translate-x-1/2 w-24 h-40 md:w-48 md:h-80 z-20 pointer-events-none will-change-[top]"
                     >
                         {/* Offset the car image so its center/bottom aligns with the tip of the line */}
                         <div className="relative -top-3/4">

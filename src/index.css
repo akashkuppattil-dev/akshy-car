@@ -49,9 +49,9 @@ body {
   /* iOS Momentum Scrolling */
   -webkit-overflow-scrolling: touch;
 
-  /* Paint Stability */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  /* Paint Stability - REMOVED to fix fixed positioning context */
+  /* -webkit-transform: translateZ(0); */
+  /* transform: translateZ(0); */
 }
 
 /* Global Image Stability */
@@ -351,4 +351,22 @@ h6 {
 section,
 [id] {
   scroll-margin-top: 6rem;
+}
+
+/* Custom Scrollbar for Chat */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-gold);
 }

@@ -28,7 +28,7 @@ export function StickyMobileCTA() {
                     initial={{ y: 100, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: 100, opacity: 0 }}
-                    className="fixed bottom-4 left-4 right-4 z-50 md:hidden max-w-sm mx-auto"
+                    className="fixed bottom-4 left-4 right-4 z-[9980] md:hidden max-w-sm mx-auto"
                     style={{ paddingBottom: 'env(safe-area-inset-bottom, 20px)' }}
                 >
                     <div className="flex gap-3 bg-zinc-950/90 backdrop-blur-md p-2 rounded-3xl border border-zinc-800 shadow-2xl">
